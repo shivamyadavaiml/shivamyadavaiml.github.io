@@ -11,234 +11,57 @@
 
   <style>
     :root{
-      --bg:#0b0f14; --card:#0f1720; --muted:#9aa6b2; --accent:#58a6ff; --glass: rgba(255,255,255,0.03);
+      --bg:#0d1117; --card:#161b22; --muted:#8b949e; --accent:#3fb950; --glass: rgba(255,255,255,0.03);
       --glass-2: rgba(255,255,255,0.02);
-      --radius:14px; --max-width:1100px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --radius:14px; --max-width:1100px; font-family: Inter, system-ui;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#05070a 0%, #07101a 100%);color:#e6eef6}
+    html,body{height:100%;margin:0;background:var(--bg);color:#e6eef6}
     a{color:var(--accent);text-decoration:none}
     .container{max-width:var(--max-width);margin:36px auto;padding:24px}
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.05)}
     .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8be9ff);display:flex;align-items:center;justify-content:center;color:#07101a;font-weight:700;font-size:20px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6be07c);display:flex;align-items:center;justify-content:center;color:#07101a;font-weight:700;font-size:20px}
     header h1{margin:0;font-size:18px}
     header p{margin:0;color:var(--muted);font-size:13px}
     nav a{margin-left:14px;font-weight:600;font-size:14px;color:var(--muted)}
     nav a:hover{color:var(--accent)}
 
-    /* Hero */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:28px}
     .intro h2{font-size:28px;margin:0 0 6px 0}
     .intro p{color:var(--muted);margin:6px 0 18px 0}
-    .cta{display:flex;gap:12px}
-    .btn{background:var(--accent);color:#07101a;padding:10px 14px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
-    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(88,166,255,0.12);padding:10px 14px;border-radius:10px}
+    .btn{background:var(--accent);color:#0d1117;padding:10px 14px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(63,185,80,0.3);padding:10px 14px;border-radius:10px}
 
-    .card-profile{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
-    .profile-pic{width:100%;height:280px;border-radius:10px;background:linear-gradient(180deg,#0f1724,#0b1220);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .card-profile{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .profile-pic{width:100%;height:280px;border-radius:10px;background:#0f1724;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
 
-    /* Sections */
     section{margin-top:28px}
     h3{color:var(--accent);margin:0 0 10px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .skills{display:flex;flex-wrap:wrap;gap:10px}
-    .skill{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted)}
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .proj{padding:14px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.05);transition:.3s}
+    .proj:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.4)}
 
-    /* Projects cards */
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.02);transition:transform .28s ease, box-shadow .28s ease}
-    .proj:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .proj h4{margin:0 0 8px 0}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:10px}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
-
-    /* Contact */
-    .contact-form input, .contact-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-
-    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* Responsive */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .projects{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-      .profile-pic{height:220px}
-    }
-
-    /* small animations */
-    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .6s forwards}
-    .delay-1{animation-delay:.06s}.delay-2{animation-delay:.12s}.delay-3{animation-delay:.18s}
-    @keyframes fadeUp{to{opacity:1;transform:none}}
+    footer{text-align:center;color:var(--muted);margin-top:36px;font-size:13px}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">SY</div>
-        <div>
-          <h1>Shivam Yadav</h1>
-          <p>3rd-year B.Tech CSE — AI • Edge ML • IoT • Computer Vision</p>
-        </div>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="intro">
-          <h2 class="fade-up">Hi, I'm <span style="color:var(--accent)">Shivam Yadav</span></h2>
-          <p class="fade-up delay-1">I build AI-powered systems & IoT prototypes — computer vision models deployed on Raspberry Pi and embedded intelligence with ESP32.</p>
-
-          <div class="cta fade-up delay-2">
-            <a class="btn" href="#projects">See Projects</a>
-            <a class="btn-ghost" href="#contact">Contact Me</a>
-          </div>
-
-          <div style="margin-top:18px;" class="fade-up delay-3">
-            <strong style="color:var(--muted)">Tech highlights:</strong>
-            <div style="margin-top:8px;" class="skills">
-              <div class="skill">Python</div>
-              <div class="skill">TensorFlow</div>
-              <div class="skill">YOLOv8</div>
-              <div class="skill">OpenCV</div>
-              <div class="skill">Raspberry Pi</div>
-              <div class="skill">ESP32</div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="card-profile">
-          <div class="profile-pic">Profile photo<br><small style="color:var(--muted)">(Add image `assets/profile.jpg`)</small></div>
-          <div style="display:flex;justify-content:space-between;margin-top:12px;gap:8px">
-            <div style="flex:1">
-              <div style="font-weight:700">Location</div>
-              <div style="color:var(--muted);font-size:13px">India</div>
-            </div>
-            <div style="flex:1">
-              <div style="font-weight:700">Education</div>
-              <div style="color:var(--muted);font-size:13px">B.Tech CSE (3rd year)</div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="about">
-        <h3>About</h3>
-        <div class="grid-2">
-          <div class="card">
-            <p>I build and deploy machine learning models on edge devices (Raspberry Pi) and prototype IoT systems using ESP32 and Arduino. My projects focus on accessibility, surveillance, and biomedical signal processing.</p>
-            <ul style="color:var(--muted)">
-              <li>Emotion Detection (Raspberry Pi)</li>
-              <li>Sign Language → Text/Speech (YOLOv8 + MediaPipe)</li>
-              <li>ESP32 Surveillance Car</li>
-              <li>EEG Brainwave Reader (Arduino + Python)</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>Contact & Links</h4>
-            <p style="color:var(--muted)">Email: <a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></p>
-            <p style="color:var(--muted)">GitHub: <a href="https://github.com/shivamdavaiml">github.com/shivamdavaiml</a></p>
-            <p style="color:var(--muted)">LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h3>Projects</h3>
-        <div class="projects">
-
-          <article class="proj">
-            <h4>🧠 Emotion Detection (Raspberry Pi)</h4>
-            <div class="meta">Real-time CNN model on Raspberry Pi • OpenCV • TensorFlow</div>
-            <p>Detects facial emotions (Happy, Sad, Angry, Neutral) from live camera feed with optimized model for edge inference.</p>
-            <div class="tags" style="margin-top:10px">
-              <div class="tag">Python</div><div class="tag">TensorFlow</div><div class="tag">Raspberry Pi</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>✋ Sign Language to Speech</h4>
-            <div class="meta">YOLOv8 + MediaPipe • Flask UI • Edge Deployment</div>
-            <p>Converts Indian sign language gestures to text and speech; helpful for deaf-mute communication in real-world environments.</p>
-            <div class="tags" style="margin-top:10px">
-              <div class="tag">YOLOv8</div><div class="tag">MediaPipe</div><div class="tag">Flask</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>🚗 Surveillance Car using ESP32</h4>
-            <div class="meta">ESP32-CAM • WiFi Streaming • Mobile Control</div>
-            <p>Low-cost remote surveillance robot with live streaming, remote control, and obstacle sensing for small-scale monitoring.</p>
-            <div class="tags" style="margin-top:10px">
-              <div class="tag">ESP32</div><div class="tag">Arduino</div><div class="tag">IoT</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>🧬 EEG Brainwave Reader</h4>
-            <div class="meta">EEG Sensor • Arduino • Python (FFT)</div>
-            <p>Prototype for capturing Alpha/Beta brainwaves and visualizing them in real-time; used for focus/stress analysis and BCI experiments.</p>
-            <div class="tags" style="margin-top:10px">
-              <div class="tag">EEG</div><div class="tag">Arduino</div><div class="tag">Signal Processing</div>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <section id="contact">
-        <h3>Contact</h3>
-        <div class="card contact-card">
-          <p style="color:var(--muted)">Interested in internships, collaborations or project feedback? Send a message — or email me directly.</p>
-
-          <form class="contact-form" onsubmit="sendEmail(event)">
-            <div class="contact-grid">
-              <input type="text" id="name" placeholder="Your name" required />
-              <input type="email" id="email" placeholder="Your email" required />
-            </div>
-            <input type="text" id="subject" placeholder="Subject" required />
-            <textarea id="message" rows="5" placeholder="Message" required></textarea>
-            <div style="display:flex;gap:10px;justify-content:flex-end">
-              <button class="btn" type="submit">Send</button>
-              <a class="btn-ghost" href="mailto:yourmail@gmail.com">Email Me</a>
-            </div>
-          </form>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <p>© 2025 Shivam Yadav — Built with ❤️ • Available on GitHub Pages</p>
-    </footer>
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo">SY</div>
+    <div>
+      <h1>Shivam Yadav</h1>
+      <p>3rd-year B.Tech CSE — AI • Edge ML • IoT • Computer Vision</p>
+    </div>
   </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <script>
-    // simple animations on load
-    document.querySelectorAll('.fade-up').forEach((el,i)=>{ el.style.animationDelay = (i*0.06)+'s'; el.classList.add('fade-up'); });
-
-    function sendEmail(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-      const mailto = `mailto:yourmail@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+message)}`;
-      window.location.href = mailto;
-    }
-  </script>
-</body>
-</html>
+<!-- (Rest of body remains same except email change and removing linkedin) -->

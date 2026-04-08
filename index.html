@@ -3,239 +3,288 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shivam Yadav — AI & IoT Portfolio</title>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Shivam Yadav — AI & IoT Portfolio" />
-  <meta property="og:description" content="Third-year B.Tech CSE student. Projects: Emotion Detection, Sign Language Model, ESP32 Surveillance Car, EEG Reader." />
+  <title>Shivam Yadav — AI & Machine Learning</title>
 
   <style>
-    :root{
-      --bg:#0d1117;
-      --card:#161b22;
-      --muted:#9ba3af;
-      --accent:#3fb950;   /* Professional green accent */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --radius:14px;
-      --max-width:1100px;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --muted: #8b949e;
+      --accent: #238636; /* Professional green */
+      --accent-hover: #2ea043;
+      --border: rgba(255,255,255,0.1);
+      --radius: 12px;
+      font-family: 'Inter', -apple-system, sans-serif;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:#e6eef6}
-    a{color:var(--accent);text-decoration:none}
-    .container{max-width:var(--max-width);margin:36px auto;padding:24px}
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.06)}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#70ff9d);display:flex;align-items:center;justify-content:center;color:#07101a;font-weight:700;font-size:20px}
-    header h1{margin:0;font-size:18px}
-    header p{margin:0;color:var(--muted);font-size:13px}
-    nav a{margin-left:14px;font-weight:600;font-size:14px;color:var(--muted)}
-    nav a:hover{color:var(--accent)}
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: #c9d1d9; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; transition: 0.2s; }
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:28px}
-    .intro h2{font-size:28px;margin:0 0 6px 0;color:#fff}
-    .intro p{color:var(--muted);margin:6px 0 18px 0}
-    .cta{display:flex;gap:12px}
-    .btn{background:var(--accent);color:#07101a;padding:10px 14px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
-    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(63,185,80,0.3);padding:10px 14px;border-radius:10px}
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
-    .card-profile{background:var(--card);padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
-    .profile-pic{width:100%;height:280px;border-radius:10px;background:#0f1724;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    /* Professional Header */
+    header { 
+      display: flex; justify-content: space-between; align-items: center; 
+      padding-bottom: 40px; border-bottom: 1px solid var(--border);
+    }
+    .logo-area { display: flex; align-items: center; gap: 15px; }
+    .initials { 
+      background: var(--accent); color: white; padding: 10px; 
+      border-radius: 8px; font-weight: 800; font-size: 1.2rem;
+    }
+    nav { display: flex; gap: 20px; }
+    nav a { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
+    nav a:hover { color: var(--accent-hover); }
 
-    /* Sections */
-    section{margin-top:28px}
-    h3{color:var(--accent);margin:0 0 10px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    /* Hero Section */
+    .hero { padding: 60px 0; display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: center; }
+    .hero h2 { font-size: 2.5rem; margin: 0; color: #fff; line-height: 1.2; }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 20px 0; }
+    
+    .status-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(35, 134, 54, 0.15); color: #3fb950;
+        padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; border: 1px solid rgba(35, 134, 54, 0.3);
+    }
 
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
-    .skills{display:flex;flex-wrap:wrap;gap:10px}
-    .skill{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted)}
+    /* Skills Grid */
+    .skills-category { margin-bottom: 20px; }
+    .skills-category h5 { margin: 0 0 10px 0; font-size: 0.8rem; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--card); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
 
-    /* Projects */
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .proj{padding:14px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);transition:transform .28s ease, box-shadow .28s ease}
-    .proj:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .proj h4{margin:0 0 8px 0;color:#fff}
-    .meta{font-size:13px;color:var(--muted);margin-bottom:10px}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.05);color:var(--muted)}
+    /* Universal Sections */
+    .section-title { font-size: 1.5rem; margin: 0 0 20px 0; color: #fff; display: flex; align-items: center; gap: 10px; }
+    
+    /* Experience & Education Cards */
+    .exp-card {
+      background: linear-gradient(to right, var(--card), rgba(22, 27, 34, 0.5));
+      border: 1px solid var(--border); border-left: 4px solid var(--accent);
+      border-radius: var(--radius); padding: 25px; margin-bottom: 20px;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+    .exp-title { margin: 0; color: #fff; font-size: 1.3rem; }
+    .exp-company { color: var(--accent); font-weight: 600; margin-top: 4px; font-size: 1rem; }
+    .exp-date { color: var(--muted); font-size: 0.9rem; text-align: right; }
+    .exp-list { color: var(--muted); margin-top: 15px; padding-left: 20px; }
+    .exp-list li { margin-bottom: 8px; }
+
+    /* Project Cards */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .proj-card { 
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; transition: all 0.3s ease; cursor: pointer; position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .proj-card:hover { 
+      border-color: var(--accent); transform: translateY(-5px); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .proj-card h4 { margin: 0 0 10px 0; color: #fff; font-size: 1.2rem; }
+    .proj-card p { font-size: 0.9rem; color: var(--muted); flex-grow: 1; margin-bottom: 15px; }
+    .proj-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+    .github-icon { opacity: 0.5; font-size: 1.2rem; }
+    .proj-card:hover .github-icon { opacity: 1; color: var(--accent); }
 
     /* Contact */
-    .contact-form input, .contact-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;margin-bottom:10px}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+    .contact-card { background: linear-gradient(145deg, #161b22, #0d1117); border: 1px solid var(--border); padding: 40px; border-radius: var(--radius); text-align: center; }
+    footer { margin-top: 80px; padding: 20px; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .projects{grid-template-columns:1fr}
-      .grid-2{grid-template-columns:1fr}
-      .profile-pic{height:220px}
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin: 15px auto; }
+      header { flex-direction: column; gap: 20px; }
+      .exp-header { flex-direction: column; }
+      .exp-date { text-align: left; }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">SY</div>
-        <div>
-          <h1>Shivam Yadav</h1>
-          <p>3rd-year B.Tech CSE — AI • Edge ML • IoT • Computer Vision</p>
+
+<div class="container">
+  <header>
+    <div class="logo-area">
+      <div class="initials">SY</div>
+      <div>
+        <h1 style="margin:0; font-size:1.2rem; color: #fff;">Shivam Yadav</h1>
+        <code style="color:var(--accent); font-size:0.8rem;">B.Tech CSE @ MIT University</code>
+      </div>
+    </div>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/shivamyadavaiml" target="_blank">GitHub</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="status-badge">● AI/ML Research Intern @ CRIEYA</div>
+      <h2>Engineering intelligent systems at the <span style="color:var(--accent)">Edge.</span></h2>
+      <p>Motivated Computer Science student blending software development with hardware integration. Skilled in computer vision, MERN stack, Web3, and embedded microcontrollers to build innovative applications.</p>
+      
+      <div style="margin-top:30px">
+        <div class="skills-category">
+            <h5>AI & Computer Vision</h5>
+            <div class="tags">
+                <span class="tag">Machine Learning</span> <span class="tag">YOLOv8</span> <span class="tag">TensorFlow</span> <span class="tag">OpenCV</span> <span class="tag">MediaPipe</span>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h5>Software & Web</h5>
+            <div class="tags">
+                <span class="tag">Python</span> <span class="tag">Java</span> <span class="tag">JavaScript</span> <span class="tag">MERN Stack</span> <span class="tag">Web3 / Solidity</span> <span class="tag">Linux Kernel Drivers</span>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h5>IoT & Hardware</h5>
+            <div class="tags">
+                <span class="tag">Raspberry Pi</span> <span class="tag">ESP32</span> <span class="tag">Arduino</span> <span class="tag">Embedded Systems</span>
+            </div>
         </div>
       </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="intro">
-          <h2>Hi, I'm <span style="color:var(--accent)">Shivam Yadav</span></h2>
-          <p>I build AI-powered systems & IoT prototypes — computer vision models deployed on Raspberry Pi and embedded intelligence with ESP32.</p>
-
-          <div class="cta">
-            <a class="btn" href="#projects">See Projects</a>
-            <a class="btn-ghost" href="#contact">Contact Me</a>
-          </div>
-
-          <div style="margin-top:18px;">
-            <strong style="color:var(--muted)">Tech highlights:</strong>
-            <div style="margin-top:8px;" class="skills">
-              <div class="skill">Python</div>
-              <div class="skill">TensorFlow</div>
-              <div class="skill">YOLOv8</div>
-              <div class="skill">OpenCV</div>
-              <div class="skill">Raspberry Pi</div>
-              <div class="skill">ESP32</div>
-            </div>
-          </div>
+    </div>
+    
+    <div style="text-align: right;" class="hide-mobile">
+        <div style="width:280px; height:280px; background:var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <img src="Profile.jpeg" alt="Shivam Yadav" style="width:100%; height:100%; object-fit:cover;">
         </div>
+    </div>
+  </section>
 
-        <aside class="card-profile">
-          <div class="profile-pic">Profile photo<br><small style="color:var(--muted)">(Add image as assets/profile.jpg)</small></div>
-          <div style="display:flex;justify-content:space-between;margin-top:12px;gap:8px">
-            <div style="flex:1">
-              <div style="font-weight:700">Location</div>
-              <div style="color:var(--muted);font-size:13px">India</div>
-            </div>
-            <div style="flex:1">
-              <div style="font-weight:700">Education</div>
-              <div style="color:var(--muted);font-size:13px">B.Tech CSE (3rd year)</div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="about">
-        <h3>About</h3>
-        <div class="grid-2">
-          <div class="card">
-            <p>I build and deploy machine learning models on edge devices (Raspberry Pi) and prototype IoT systems using ESP32 and Arduino. My projects focus on accessibility, surveillance, and biomedical signal processing.</p>
-            <ul style="color:var(--muted)">
-              <li>Emotion Detection (Raspberry Pi)</li>
-              <li>Sign Language → Text/Speech (YOLOv8 + MediaPipe)</li>
-              <li>ESP32 Surveillance Car</li>
-              <li>EEG Brainwave Reader</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h4>Contact & Links</h4>
-            <p style="color:var(--muted)">Email: <a href="mailto:shivamyadavaiml@gmail.com">shivamyadavaiml@gmail.com</a></p>
-            <p style="color:var(--muted)">GitHub: <a href="https://github.com/shivamdavaiml">github.com/shivamdavaiml</a></p>
-          </div>
+  <section id="experience" style="margin-top:20px;">
+    <div class="section-title"><span>💼</span> Experience & Education</div>
+    
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <h3 class="exp-title">AI/ML Research Intern</h3>
+          <div class="exp-company">Centre for Research, Innovation & Entrepreneurship (CRIEYA), MIT-ADT University</div>
         </div>
-      </section>
-
-      <section id="projects">
-        <h3>Projects</h3>
-        <div class="projects">
-
-          <article class="proj">
-            <h4>🧠 Emotion Detection (Raspberry Pi)</h4>
-            <div class="meta">Real-time CNN model on Raspberry Pi • OpenCV • TensorFlow</div>
-            <p>Detects facial emotions from live camera feed with optimized model for edge inference.</p>
-            <div class="tags">
-              <div class="tag">Python</div><div class="tag">TensorFlow</div><div class="tag">Raspberry Pi</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>✋ Sign Language to Speech</h4>
-            <div class="meta">YOLOv8 + MediaPipe • Flask UI • Edge Deployment</div>
-            <p>Converts sign gestures to text and speech; helpful for deaf-mute communication.</p>
-            <div class="tags">
-              <div class="tag">YOLOv8</div><div class="tag">MediaPipe</div><div class="tag">Flask</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>🚗 Surveillance Car using ESP32</h4>
-            <div class="meta">ESP32-CAM • WiFi Streaming • Mobile Control</div>
-            <p>Low-cost remote surveillance robot with live streaming and remote control.</p>
-            <div class="tags">
-              <div class="tag">ESP32</div><div class="tag">Arduino</div><div class="tag">IoT</div>
-            </div>
-          </article>
-
-          <article class="proj">
-            <h4>🧬 EEG Brainwave Reader</h4>
-            <div class="meta">EEG Sensor • Arduino • Python FFT</div>
-            <p>Captures Alpha/Beta brainwaves and visualizes them in real-time.</p>
-            <div class="tags">
-              <div class="tag">EEG</div><div class="tag">Arduino</div><div class="tag">Signal Processing</div>
-            </div>
-          </article>
-
+        <div class="exp-date">
+          Feb 2026 — Apr 2026<br>Pune, Maharashtra
         </div>
-      </section>
+      </div>
+      <ul class="exp-list">
+        <li>Spearheading the core development of a <strong>Machine Learning-based Driver Drowsiness Detection System</strong>.</li>
+        <li>Owning the end-to-end project lifecycle, including Proof of Concept (POC) creation, rigorous model testing, and comprehensive project documentation.</li>
+        <li>Conducting applied research to author and publish an academic research paper based on the system's edge-inference performance.</li>
+      </ul>
+      <div class="tags" style="margin-top:15px;">
+        <span class="tag">Research & Development</span> <span class="tag">Model Testing</span> <span class="tag">Prototyping</span>
+      </div>
+    </div>
 
-      <section id="contact">
-        <h3>Contact</h3>
-        <div class="card">
-          <p style="color:var(--muted)">Interested in internships, collaborations, or project feedback? Send a message — or email me directly.</p>
-
-          <form class="contact-form" onsubmit="sendEmail(event)">
-            <div class="contact-grid">
-              <input type="text" id="name" placeholder="Your name" required />
-              <input type="email" id="email" placeholder="Your email" required />
-            </div>
-            <input type="text" id="subject" placeholder="Subject" required />
-            <textarea id="message" rows="5" placeholder="Message" required></textarea>
-            <div style="display:flex;gap:10px;justify-content:flex-end">
-              <button class="btn" type="submit">Send</button>
-              <a class="btn-ghost" href="mailto:shivamyadavaiml@gmail.com">Email Me</a>
-            </div>
-          </form>
+    <div class="exp-card" style="border-left-color: #8b949e;">
+      <div class="exp-header">
+        <div>
+          <h3 class="exp-title">B.Tech in Computer Science</h3>
+          <div class="exp-company">MIT University, Pune</div>
         </div>
-      </section>
+        <div class="exp-date">
+          2023 — 2027<br>Pune, Maharashtra
+        </div>
+      </div>
+      <ul class="exp-list">
+        <li>Building a solid foundation in programming, web development, and emerging technologies.</li>
+        <li>Pre-university: 12th CBSE (76%) | 10th CBSE (92%)</li>
+      </ul>
+    </div>
+  </section>
 
-    </main>
+  <section id="projects" style="margin-top:60px;">
+    <div class="section-title"><span>🚀</span> Featured Projects</div>
+    <div class="projects-grid">
 
-    <footer>
-      <p>© 2025 Shivam Yadav — Built with ❤️ • Hosted on GitHub Pages</p>
-    </footer>
-  </div>
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <h4>🧠 Arduino-Based EEG Emotion Detection</h4>
+          <p>Captured brainwave signals to classify emotions with machine learning, enhancing applications in mental health and HCI.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">Arduino</span><span class="tag">ML</span><span class="tag">Hardware</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
 
-  <script>
-    function sendEmail(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-      const mailto = `mailto:shivamyadavaiml@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\\n\\n'+message)}`;
-      window.location.href = mailto;
-    }
-  </script>
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <h4>🛡️ Cryptocurrency Fraud Detection</h4>
+          <p>Developed a Crypto Flow Tracker to analyze and visualize transaction patterns, tracking fund movements for enhanced transparency.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">Web3</span><span class="tag">Solidity</span><span class="tag">Data Viz</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <h4>📍 Car Emergency Assistance App</h4>
+          <p>Application integrating geolocation to instantly locate nearby petrol pumps, mechanics, and hospitals in case of emergencies.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">App Dev</span><span class="tag">Geolocation</span><span class="tag">API</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <div style="font-size: 0.7rem; color: var(--accent); font-weight: bold; margin-bottom: 5px;">INSTITUTIONAL RESEARCH</div>
+          <h4>Driver Drowsiness System</h4>
+          <p>Deploying a fatigue detection ML model on Raspberry Pi. Optimized for real-time edge inference with custom PCB integration.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">RPi</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <h4>✋ Sign Language to Text</h4>
+          <p>Computer vision model that converts hand gestures into text using ML classification to assist communication.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">MediaPipe</span><span class="tag">YOLOv8</span><span class="tag">CV</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/shivamyadavaiml" target="_blank" class="proj-card">
+        <div>
+          <h4>🚗 ESP32 AI Surveillance Car</h4>
+          <p>Smart surveillance rover with real-time video streaming and AI-based object detection using Arduino Uno and ESP32-CAM.</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tags"><span class="tag">C++</span><span class="tag">IoT</span><span class="tag">Embedded</span></div>
+          <span class="github-icon">↗</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="contact" style="margin-top:80px">
+    <div class="contact-card">
+      <h3 style="margin-top:0; font-size:1.8rem; color:#fff;">Let's Collaborate</h3>
+      <p style="color:var(--muted); font-size:1.1rem; max-width: 500px; margin: 0 auto 20px;">
+        I'm actively expanding my expertise in AI, IoT, and Web3. Open to discussing projects, feedback, or future opportunities.
+      </p>
+      <a href="mailto:shivamyadavaiml@gmail.com" class="tag" style="padding: 14px 28px; background: var(--accent); border:none; color:white; font-size: 1rem; font-weight:bold; display:inline-block; margin-top:10px; cursor: pointer;">
+        shivamyadavaiml@gmail.com
+      </a>
+      <p style="margin-top: 20px; font-size: 0.9rem; color: var(--muted);">Phone: (+91) 8858684364 | Location: Pune, Maharashtra</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Shivam Yadav • Built with a passion for hardware & software</p>
+  </footer>
+</div>
 
 </body>
 </html>
